@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "outDir": "server",
+    "module": "commonjs",
+    "target": "es5",
+    "lib": ["es6", "dom"],
+    "sourceMap": true,
+    "allowJs": false,
+    "jsx": "react",
+    "moduleResolution": "node",
+    "rootDir": "src",
+    "skipLibCheck": true,
+    "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "noUnusedLocals": true
+  },
+  "exclude": [
+    "node_modules",
+    "public",
+    "build/*.js",
+    "scripts",
+    "acceptance-tests",
+    "webpack",
+    "jest",
+    "build/static",
+    "build/service-worker.js",
+    "./*.js",
+    "src/setupTests.ts"
+  ]
+}
