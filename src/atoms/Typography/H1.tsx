@@ -1,14 +1,31 @@
 import * as React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { getPaletteFromTheme } from '../../themes';
 
-type IH1Props = {
+export interface IHeadingProps {
   theme: ITheme;
-};
+  level: number;
+  palette: string;
+  reverse?: boolean;
+  children: React.ReactNode;
+}
 
-const H1 = styled.h1`
-  font-size: ${(props: IH1Props) => props.theme.typography.H1.fontSize || '1.5em'};
+const fontSize = ({ level }: IHeadingProps) => `${0.75 + (1 * (1 / level))}rem`;
+const fontColor = ({ palette }: IHeadingProps) => getPaletteFromTheme(palette);
+
+const styles = css`
+  font-size: ${fontSize};
   text-align: center;
-  color: palevioletred;
+  color: ${fontColor};
 `;
 
-export default (props: IH1Props) => <H1 {...props} />;
+const Heading = styled(({
+  level, children, reverse, palette, theme, ...props
+}: IHeadingProps) => React.createElement(`h${level}`, props, children))`${styles}`;
+
+Heading.defaultProps = {
+  palette: 'grayscale',
+  level: 1,
+};
+
+export default (props: IHeadingProps) => <Heading {...props} />;

@@ -20,4 +20,8 @@ const styles = css`
 
 const StyledColor = styled.span`${styles}`;
 
+StyledColor.defaultProps = {
+  palette: 'primary',
+};
+
 export default (props: TColorProps) => (<StyledColor {...props}/>);

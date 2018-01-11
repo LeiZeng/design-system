@@ -5,7 +5,7 @@ export interface IPropsWithTheme {
   theme: ITheme;
 }
 
-export const getPaletteFromTheme = (p: string): string => {
+export const getPaletteFromTheme = (p= 'primary'): string => {
   const hasIndex = p.match(/\d+$/);
   let index;
 
