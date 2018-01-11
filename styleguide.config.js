@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   sections: [
     {
@@ -9,19 +11,8 @@ module.exports = {
       components: 'src/atoms/**/*.{ts,tsx}'
     }
   ],
-  updateExample: function(props, exampleFilePath) {
-    const { content, ...others } = props
-    return {
-      ...others,
-      content: `
-const { ThemeProvider } = require('styled-components');
-const theme = require('../../../src/themes').default;
-
-<ThemeProvider theme={theme}>
-${content}
-</ThemeProvider>
-      `
-    }
+  styleguideComponents: {
+    Wrapper: path.join(__dirname, 'src/Wrapper')
   },
   propsParser: require('react-docgen-typescript').parse,
   webpackConfig: require('react-scripts-ts/config/webpack.config.dev.js')
