@@ -1,21 +1,33 @@
-
-import styled from 'styled-components';
-import { ITheme } from '../../themes/index';
-import { IColorProps, getColor } from '../../themes/default';
+import * as React from 'react';
+import styled, { css } from 'styled-components';
+import { palette } from 'styled-theme';
 
 type TColorProps = {
   theme: ITheme;
+  palette: string;
   width?: string;
   height?: string;
-} & IColorProps;
+};
 
-export default styled.span`
+const getPalette = (p: string): string => {
+  const hasIndex = p.match(/\d+$/);
+  let index;
+
+  if (!hasIndex) {
+    index = 0;
+  } else {
+    index = Number(hasIndex[0]) || 0;
+  }
+  return palette(p.replace(/\d+$/, ''), index);
+};
+const backgroundColor = (props: TColorProps) => getPalette(props.palette);
+
+const styles = css`
   display: block;
   width: ${({width = '200px'}: TColorProps) => width};
   height: ${({height = '40px'}: TColorProps) => height};
-  background: ${(props: TColorProps) => {
-    const colorKey = Object.keys(props)
-      .find(key => props[key] && props.theme.colors[key]) || 'primary';
-    return getColor(colorKey, props[colorKey]);
-  }};
+  background: ${backgroundColor};
 `;
+const StyledBrandColor = styled.span`${styles}`;
+
+export default (props: TColorProps) => (<StyledBrandColor {...props}/>);

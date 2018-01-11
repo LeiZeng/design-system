@@ -1189,6 +1189,10 @@ cookie@0.3.1:
   version "0.3.1"
   resolved "http://registry.npm.taobao.org/cookie/download/cookie-0.3.1.tgz#e7e0a1f9ef43b4c8ba925c5c5a96e806d16873bb"
 
+coolors-to-hex@^1.0.0:
+  version "1.0.3"
+  resolved "http://registry.npm.taobao.org/coolors-to-hex/download/coolors-to-hex-1.0.3.tgz#5945ee32e8180b0298347ecd6eb00b6d28802e0e"
+
 copy-concurrently@^1.0.0:
   version "1.0.5"
   resolved "http://registry.npm.taobao.org/copy-concurrently/download/copy-concurrently-1.0.5.tgz#92297398cae34937fcafd6ec8139c18051f0b5e0"
@@ -6161,6 +6165,19 @@ styled-components@^2.4.0:
     prop-types "^15.5.4"
     stylis "^3.4.0"
     supports-color "^3.2.3"
+
+styled-theme@^0.3.3:
+  version "0.3.3"
+  resolved "http://registry.npm.taobao.org/styled-theme/download/styled-theme-0.3.3.tgz#bfd86c275143e58ced413df3b4704369c44253bc"
+  dependencies:
+    coolors-to-hex "^1.0.0"
+    styled-tools "^0.1.4"
+
+styled-tools@^0.1.4:
+  version "0.1.5"
+  resolved "http://registry.npm.taobao.org/styled-tools/download/styled-tools-0.1.5.tgz#68052c2faf217870aba865905a2859f43c2951d8"
+  dependencies:
+    lodash "^4.17.4"
 
 stylelint-custom-processor-loader@^0.4.0:
   version "0.4.0"

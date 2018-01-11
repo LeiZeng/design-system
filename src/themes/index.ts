@@ -1,17 +1,6 @@
-import {
-  ITypography, typography,
-  IColors, colors,
-} from './default';
+import theme from './default';
 
-export interface ITheme {
-  typography: ITypography;
-  colors: IColors;
-}
 export interface IPropsWithTheme {
   theme: ITheme;
 }
-
-export default {
-  typography,
-  colors,
-};
+export default theme;

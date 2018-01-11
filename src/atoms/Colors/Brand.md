@@ -1,22 +1,22 @@
 Brand Colors:
 
 ```jsx
-<Brand primary={true}></Brand>
+<Brand palette="primary"></Brand>
 ```
 
 ```jsx
-<Brand secondary={true}></Brand>
+<Brand palette="secondary"></Brand>
 ```
 
 ```jsx
-<Brand alert={true}></Brand>
+<Brand palette="alert"></Brand>
 ```
 
 ```jsx
-<Brand success={true}></Brand>
+<Brand palette="success"></Brand>
 ```
 
 
 ```jsx
-<Brand neutral={1}></Brand>
+<Brand palette="grayscale3"></Brand>
 ```

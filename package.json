@@ -6,7 +6,8 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-scripts-ts": "^2.8.0",
-    "styled-components": "^2.4.0"
+    "styled-components": "^2.4.0",
+    "styled-theme": "^0.3.3"
   },
   "scripts": {
     "start": "react-app-rewired start --scripts-version react-scripts-ts",
