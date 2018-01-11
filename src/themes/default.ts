@@ -5,6 +5,7 @@ const typography: ITypography = {
     fontSize: '1.6em',
   }
 };
+
 const palette: IPalette = {
   primary: ['#1976d2', '#2196f3', '#71bcf7', '#c2e2fb'],
   secondary: ['#c2185b', '#e91e63', '#f06292', '#f8bbd0'],
@@ -35,6 +36,7 @@ const fonts: IFont = {
 const sizes: ISize = {
   maxWidth: '1100px',
 };
+
 const theme: ITheme = {
   typography,
   palette,

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled, { css } from 'styled-components';
-import { palette } from 'styled-theme';
+import { getPaletteFromTheme } from '../../themes';
 
 type TColorProps = {
   theme: ITheme;
@@ -9,18 +9,7 @@ type TColorProps = {
   height?: string;
 };
 
-const getPalette = (p: string): string => {
-  const hasIndex = p.match(/\d+$/);
-  let index;
-
-  if (!hasIndex) {
-    index = 0;
-  } else {
-    index = Number(hasIndex[0]) || 0;
-  }
-  return palette(p.replace(/\d+$/, ''), index);
-};
-const backgroundColor = (props: TColorProps) => getPalette(props.palette);
+const backgroundColor = (props: TColorProps) => getPaletteFromTheme(props.palette);
 
 const styles = css`
   display: block;
@@ -28,6 +17,7 @@ const styles = css`
   height: ${({height = '40px'}: TColorProps) => height};
   background: ${backgroundColor};
 `;
+
 const StyledBrandColor = styled.span`${styles}`;
 
 export default (props: TColorProps) => (<StyledBrandColor {...props}/>);
