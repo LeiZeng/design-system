@@ -4,6 +4,7 @@ declare interface IComposer {
 
 declare interface IStyledTheme {
   palette(p: string, index: number): string;
+  palette(p: string, index: number, reverse: boolean): string;
 }
 
 declare interface IPalette {

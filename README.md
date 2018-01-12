@@ -2,14 +2,15 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Step One
 [ ]Button
-[ ]Icon
 [ ]Heading
 [ ]Paragraph
 [ ]Inputs
+[ ]Icon
 
 ## Step Two
 [ ]Implement new design for Atomics
-[ ]Implement new design for features
+[ ]Implement new design for Features
+[ ]Identify Molecules
 
 ## Road Map
 [ ]Form support
