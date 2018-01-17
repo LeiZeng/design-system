@@ -3,7 +3,7 @@ import { reversePalette as rp } from 'styled-theme/composer';
 const typography: ITypography = {
   H1: {
     fontSize: '1.6em',
-  }
+  },
 };
 
 const palette: IPalette = {
@@ -35,6 +35,9 @@ const fonts: IFont = {
 
 const sizes: ISize = {
   maxWidth: '1100px',
+  large: '12em',
+  middle: '8em',
+  small: '4em',
 };
 
 const theme: ITheme = {
@@ -42,7 +45,7 @@ const theme: ITheme = {
   palette,
   reversePalette,
   fonts,
-  sizes
+  sizes,
 };
 
 export default theme;
