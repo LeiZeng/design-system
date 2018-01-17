@@ -3,9 +3,10 @@ declare interface IComposer {
 }
 
 declare interface IStyledTheme {
-  palette(p: string, index: number): string;
-  palette(p: string, index: number, reverse: boolean): string;
-  font(p: strint): string;
+  palette(p: string, index: number): Interpolation;
+  palette(p: string, index: number, reverse: boolean): Interpolation;
+  font(p: string): Interpolation;
+  size(p: string): Interpolation;
 }
 
 declare interface IPalette {

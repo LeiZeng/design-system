@@ -1,31 +1,45 @@
 import * as React from 'react';
 import styled, { css } from 'styled-components';
-import { font, palette } from 'styled-theme';
+import { font, palette, size as sizeTheme } from 'styled-theme';
 
 export interface IButtonProps {
   children: React.ReactNode;
   /** Button theme */
-  theme: 'primary' | 'secondary' | 'danger' | 'alert' | 'success';
+  color: 'primary' | 'secondary' | 'danger' | 'alert' | 'success';
   /** Button Type */
   type?: 'submit' | 'button';
   /** Button Size */
   size?: 'large' | 'middle' | 'small';
+  fullWidth?: boolean;
   onClick?: () => void;
   href?: string;
   disabled?: boolean;
   transparent?: boolean;
 }
 
-const backgroundColor = ({ theme, transparent }: IButtonProps) =>
-  transparent ? 'transparent' : palette(theme, 1);
-const foregroundColor = ({ theme, transparent }: IButtonProps) =>
-  transparent ? palette(theme, 1) : palette('grayscale', 0, true);
-const hoverBackgroundColor = ({ theme, transparent }: IButtonProps) =>
-  transparent ? 'transparent' : palette(theme, 0);
-const hoverForegroundColor = ({ theme, transparent }: IButtonProps) =>
-  transparent ? palette(theme, 0) : palette('grayscale', 0, true);
+const backgroundColor = ({ color, transparent, disabled }: IButtonProps) =>
+  transparent ? 'transparent' : palette(color, disabled ? 2 : 1);
+
+const foregroundColor = ({ color, transparent, disabled }: IButtonProps) =>
+  transparent
+    ? palette(color, disabled ? 2 : 1)
+    : palette('grayscale', 0, true);
+
+const hoverBackgroundColor = ({ color, transparent, disabled }: IButtonProps) =>
+  !disabled && !transparent && palette(color, 0);
+
+const hoverForegroundColor = ({ color, transparent, disabled }: IButtonProps) =>
+  !disabled && transparent && palette(color, 0);
+
+const width = ({ size, fullWidth }: IButtonProps) => {
+  return fullWidth ? '100%' : sizeTheme(size as string);
+};
+
 const border = ({ transparent }: IButtonProps) =>
   `0.0625em solid ${transparent ? 'currentcolor' : 'transparent'}`;
+
+const cursor = ({ disabled }: IButtonProps) =>
+  disabled ? 'not-allowed' : 'pointer';
 
 const styles = css`
   display: inline-flex;
@@ -33,16 +47,17 @@ const styles = css`
   align-items: center;
   white-space: nowrap;
   font-size: 1em;
+  width: ${width};
   height: 2.5em;
   justify-content: center;
   text-decoration: none;
-  cursor: pointer;
+  cursor: ${cursor};
   appearance: none;
   padding: 0 1em;
   border: ${border};
   border-radius: 0.125em;
   box-sizing: border-box;
-  pointer-events: 'auto'
+  pointer-events: 'auto';
   transition: background-color 250ms ease-out, color 250ms ease-out,
     border-color 250ms ease-out;
   background-color: ${backgroundColor};
@@ -74,7 +89,7 @@ const Button: React.SFC<IButtonProps> = ({ type, ...props }: IButtonProps) => {
 };
 
 Button.defaultProps = {
-  theme: 'primary',
+  color: 'primary',
 };
 
 export default ({ ...props }: IButtonProps) => <Button {...props} />;
