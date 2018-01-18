@@ -1,10 +1,14 @@
+declare type TFont = string;
+declare type TColor = string;
 declare interface IComposer {
   reversePalette(palette: IPalette): IPalette;
 }
 
 declare interface IStyledTheme {
-  palette(p: string, index: number): string;
-  palette(p: string, index: number, reverse: boolean): string;
+  palette(p: string, index: number): TColor;
+  palette(p: object, index: number): TColor;
+  palette(p: string, index: number, reverse: boolean): TColor;
+  font(f: string): TFont;
 }
 
 declare interface IPalette {

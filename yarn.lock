@@ -5108,6 +5108,10 @@ raw-body@2.3.2:
     iconv-lite "0.4.19"
     unpipe "1.0.0"
 
+raw-loader@^0.5.1:
+  version "0.5.1"
+  resolved "http://registry.npm.taobao.org/raw-loader/download/raw-loader-0.5.1.tgz#0c3d0beaed8a01c966d9787bf778281252a979aa"
+
 rc@^1.0.1, rc@^1.1.6, rc@^1.1.7:
   version "1.2.2"
   resolved "http://registry.npm.taobao.org/rc/download/rc-1.2.2.tgz#d8ce9cb57e8d64d9c7badd9876c7c34cbe3c7077"
@@ -6176,6 +6180,12 @@ styled-theme@^0.3.3:
 styled-tools@^0.1.4:
   version "0.1.5"
   resolved "http://registry.npm.taobao.org/styled-tools/download/styled-tools-0.1.5.tgz#68052c2faf217870aba865905a2859f43c2951d8"
+  dependencies:
+    lodash "^4.17.4"
+
+styled-tools@^0.2.3:
+  version "0.2.3"
+  resolved "http://registry.npm.taobao.org/styled-tools/download/styled-tools-0.2.3.tgz#a33d651fa9d4dac7a46c6aba9c745c6b12322d7b"
   dependencies:
     lodash "^4.17.4"
 

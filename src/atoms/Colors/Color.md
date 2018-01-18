@@ -7,10 +7,6 @@
   <Color key="2" palette="primary1"></Color>,
   <Color key="3" palette="primary2"></Color>,
   <Color key="4" palette="primary3"></Color>,
-  <Color key="5" palette="secondary"></Color>,
-  <Color key="6" palette="secondary1"></Color>,
-  <Color key="7" palette="secondary2"></Color>,
-  <Color key="8" palette="secondary3"></Color>
 ]
 ```
 **Functional colors**:
