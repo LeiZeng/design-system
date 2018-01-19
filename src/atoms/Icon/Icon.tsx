@@ -3,17 +3,11 @@ import styled from 'styled-components';
 import { palette } from 'styled-theme';
 import { ifProp } from 'styled-tools';
 
-type TWidthHeight = {
-  width?: number;
-  height?: number;
-};
 export type TIconProps = {
-  theme?: ITheme;
-  palette?: string;
   icon: string;
-} & TWidthHeight;
+} & IBoxProps & IAtomProps;
 
-const fontSize = ({ width, height }: TWidthHeight) => {
+const fontSize = ({ width, height }: IBoxProps) => {
   const size = width || height;
   return size ? `${size / 16}rem` : '1.25em';
 };

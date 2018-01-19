@@ -1,23 +1,21 @@
 import * as React from 'react';
 import styled, { css } from 'styled-components';
-import { getPaletteFromTheme } from '../../themes';
+import { font, palette as pale } from 'styled-theme';
 
-export interface IHeadingProps {
-  theme?: ITheme;
+export interface IHeadingProps extends IAtomProps {
   level?: number;
-  palette?: string;
   reverse?: boolean;
   children: React.ReactNode;
-}
+} 
 const DEFAULT_LEVEL = 1;
 const DEFAULT_PALETTE = 'grayscale';
 const fontSize = ({ level = DEFAULT_LEVEL }: IHeadingProps) => `${0.75 + (1 * (1 / level))}rem`;
-const fontColor = ({ palette }: IHeadingProps) => getPaletteFromTheme(palette);
 
 const styles = css`
+  font-family: ${font('primary')};
   font-size: ${fontSize};
   text-align: center;
-  color: ${fontColor};
+  color: ${pale('grayscale', 0)};
 `;
 
 const Heading = styled(({

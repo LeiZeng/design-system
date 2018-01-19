@@ -13,3 +13,13 @@ declare interface ITheme {
   fonts: IFont;
   sizes: ISize;
 }
+
+declare interface IAtomProps {
+  theme?: ITheme;
+  palette?: string;
+}
+
+declare interface IBoxProps {
+  width?: number;
+  height?: number;
+}

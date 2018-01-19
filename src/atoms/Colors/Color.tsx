@@ -2,14 +2,10 @@ import * as React from 'react';
 import styled, { css } from 'styled-components';
 import { getPaletteFromTheme } from '../../themes';
 
-export type TColorProps = {
-  theme: ITheme;
-  palette: string;
-  width?: string;
-  height?: string;
-};
+export type TColorProps = IBoxProps & IAtomProps;
 
-const backgroundColor = (props: TColorProps) => getPaletteFromTheme(props.palette);
+const DEFAULT_PALETTE = 'primary';
+const backgroundColor = ({palette = DEFAULT_PALETTE}: TColorProps) => getPaletteFromTheme(palette);
 
 const styles = css`
   display: block;
@@ -20,8 +16,4 @@ const styles = css`
 
 const StyledColor = styled.span`${styles}`;
 
-StyledColor.defaultProps = {
-  palette: 'primary',
-};
-
-export default (props: TColorProps) => (<StyledColor {...props}/>);
+export default (props: TColorProps) => (<StyledColor {...props} />);
