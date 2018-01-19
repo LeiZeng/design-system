@@ -15,7 +15,11 @@ type TRadioProps = {
 type TTypeSpecificProps = TSelectProps | TTextProps | TRadioProps;
 type TInputProps = {
   type?: string;
-} & TTypeSpecificProps & IBoxProps & IAtomProps;
+  theme?: ITheme;
+  palette?: string;
+  width?: number;
+  height?: number;
+} & TTypeSpecificProps;
 
 const DEFAULT_TYPE = 'text';
 const DEFAULT_HEIGHT = 40;

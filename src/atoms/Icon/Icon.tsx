@@ -3,9 +3,13 @@ import styled from 'styled-components';
 import { palette } from 'styled-theme';
 import { ifProp } from 'styled-tools';
 
-export type TIconProps = {
+export interface IIconProps {
+  theme?: ITheme;
+  palette?: string;
+  width?: number;
+  height?: number;
   icon: string;
-} & IBoxProps & IAtomProps;
+}
 
 const fontSize = ({ width, height }: IBoxProps) => {
   const size = width || height;
@@ -28,7 +32,7 @@ const Wrapper = styled.span`
   }
 `;
 
-export default ({ icon, ...props }: TIconProps) => {
+export default ({ icon, ...props }: IIconProps) => {
   const svg = require(`!raw-loader!./icons/${icon}.svg`);
   return <Wrapper {...props} dangerouslySetInnerHTML={{ __html: svg }} />;
 };

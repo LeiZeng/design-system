@@ -2,7 +2,9 @@ import * as React from 'react';
 import styled, { css } from 'styled-components';
 import { font, palette as pale } from 'styled-theme';
 
-export interface IHeadingProps extends IAtomProps {
+export interface IHeadingProps {
+  theme?: ITheme;
+  palette?: string;
   level?: number;
   reverse?: boolean;
   children: React.ReactNode;

@@ -2,7 +2,9 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { font, palette } from 'styled-theme';
 
-export interface IParagraphProps extends IAtomProps {
+export interface IParagraphProps {
+  theme?: ITheme;
+  palette?: string;
   children: React.ReactNode;
 }
 
