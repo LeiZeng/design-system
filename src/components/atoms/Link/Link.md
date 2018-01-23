@@ -1,3 +1,0 @@
-```
-<Link to="/">Home</Link>
-```
