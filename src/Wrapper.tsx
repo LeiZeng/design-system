@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ThemeProvider } from 'styled-components';
-import theme from './themes';
+import theme from './components/themes';
 
 // This is for styleguidist components render with theme
 export default (props: React.Props<{}>) => (
