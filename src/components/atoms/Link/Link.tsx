@@ -1,13 +1,12 @@
 import * as React from 'react';
 import styled, { css } from 'styled-components';
 import { font, palette } from 'styled-theme';
-import { NavLink } from 'react-router-dom';
+import { NavLink, NavLinkProps } from 'react-router-dom';
 
-export interface ILinkProps {
+export interface ILinkProps extends NavLinkProps {
   theme?: ITheme;
   palette?: string;
   reverse?: boolean;
-  to: string;
 }
 
 const styles = css`

@@ -11,7 +11,7 @@ interface IInputProps {
   height?: number;
 }
 interface ISelectProps extends IInputProps {
-  options?: {
+  options: {
     [key: string]: string;
   };
 }
@@ -21,7 +21,7 @@ interface ITextProps extends IInputProps {
 interface IRadioProps extends IInputProps {
   checked?: boolean;
 }
-type TInputPropsAll = ISelectProps & IRadioProps & ITextProps;
+type TInputPropsAll = ISelectProps | IRadioProps | ITextProps;
 
 const DEFAULT_TYPE = 'text';
 const DEFAULT_HEIGHT = 40;
@@ -50,12 +50,12 @@ const styles = css`
   }
 `;
 const StyledTextarea = styled.textarea`${styles}`;
-const StyledSelect = styled(({options = {}, ...props}: ISelectProps) => (
+const StyledSelect = styled<ISelectProps>(({options = {}, ...props}) => (
   <select {...props}>
   {Object.keys(options).map(key => <option key={key} value={key}>{options[key]}</option>)}
   </select>
 ))`${styles}`;
-const StyledRadioOrCheckbox = styled(({...props}: IRadioProps) => (
+const StyledRadioOrCheckbox = styled<IRadioProps>(({...props}) => (
   <input {...props}/>
 ))`${styles}`;
 const StyledInput = styled.input`${styles}`;
@@ -63,8 +63,8 @@ const StyledInput = styled.input`${styles}`;
 export default ({ type = DEFAULT_TYPE, height = DEFAULT_HEIGHT, ...props }: TInputPropsAll) => {
   if (type === 'textarea') {
     return <StyledTextarea {...props} height={height} />;
-  } else if (type === 'select' && !!props.options) {
-    return <StyledSelect {...props} height={height} />;
+  } else if (type === 'select' && !!(props as ISelectProps).options) {
+    return <StyledSelect {...props as ISelectProps} height={height} />;
   } else if (type === 'radio' || type === 'checkbox') {
     return <StyledRadioOrCheckbox {...props} type={type} height={height}/>;
   }
