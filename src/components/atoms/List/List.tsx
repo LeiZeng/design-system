@@ -20,12 +20,17 @@ const Ul = styled.ul`
   margin: 1rem 0;
   padding-left: 1.6rem;
   line-height: 1.7rem;
+  list-style: none;
   color: ${palette({ grayscale: 0 }, 1)};
 `;
+const Li = styled.li`
+  list-style: none;
+`;
+
 const List = (props: IListProps) => <Ul {...props} />;
 
 const SortableItem = SortableElement(({value}: ISortableElement) =>
-  <li>{value}</li>
+  <Li>{value}</Li>
 );
 
 export default SortableContainer(({ items, palette = 'grayscale', ...props }: IListProps & ISortableContainer) => (

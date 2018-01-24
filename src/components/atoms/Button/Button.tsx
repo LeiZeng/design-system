@@ -12,27 +12,44 @@ interface IButtonProps {
   reverse?: boolean;
   height?: number;
   type?: string;
+  size?: 'small' | 'default' | 'large';
   to?: string;
   href?: string;
 }
 
-const fontSize = ({ height = 40 }: IButtonProps) => `${height / 40}rem`;
+const fontSize = ({ size = 'default', height = 40 }: IButtonProps) => {
+  let baseline = 40;
+  switch (size) {
+    case 'small':
+      baseline = 50;
+      break;
+    case 'large':
+      baseline = 32;
+      break;
+    default:
+  }
+  return `${height / baseline}rem`;
+};
 
 const backgroundColor = ({ transparent, disabled, palette = 'primary' }: IButtonProps) => {
   return transparent ? 'transparent'
-      : paletteTheme(palette === 'primary' ? palette : 'grayscale', disabled ? 2 : 0, palette === 'secondary');
+      : paletteTheme(palette === 'secondary' ? 'grayscale' : palette, disabled ? 2 : 0, palette === 'secondary');
 };
 const foregroundColor = ({ transparent, disabled, palette = 'primary' }: IButtonProps) =>
   transparent ? paletteTheme(disabled ? 2 : 1) : paletteTheme('grayscale', 0, palette !== 'secondary');
 
 const hoverBackgroundColor = ({ disabled, transparent, palette = 'primary' }: IButtonProps) =>
   !disabled && !transparent
-  && paletteTheme(palette, palette === 'primary' ? 1 : 0)
+  && paletteTheme(palette, palette === 'secondary' ? 0 : 1)
   || '';
 
 const hoverForegroundColor = ({ disabled, transparent, palette = 'primary' }: IButtonProps) =>
   !disabled && !transparent
-  && paletteTheme(palette === 'secondary' ? 'primary' : 'grayscale', 1, palette === 'primary')
+  && paletteTheme(
+    palette === 'secondary' ? 'primary' : 'grayscale',
+    palette === 'secondary' ? 1 : 0,
+    palette !== 'secondary'
+  )
   || '';
 
 const borderColor = ({ palette }: IButtonProps) =>
@@ -77,7 +94,7 @@ const StyledLink = styled<IButtonProps>(({
 const Anchor = styled.a`${styles}`;
 const StyledButton = styled.button`${styles}`;
 
-export default ({ type = 'button', ...props }) => {
+export default ({ type = 'button', ...props }: IButtonProps) => {
   if (props.to) {
     return <StyledLink {...props} />;
   } else if (props.href) {
