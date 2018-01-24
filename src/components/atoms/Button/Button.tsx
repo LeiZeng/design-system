@@ -13,6 +13,7 @@ interface IButtonProps {
   height?: number;
   type?: string;
   size?: 'small' | 'default' | 'large';
+  fullWidth?: boolean;
   to?: string;
   href?: string;
 }
@@ -31,32 +32,53 @@ const fontSize = ({ size = 'default', height = 40 }: IButtonProps) => {
   return `${height / baseline}rem`;
 };
 
-const backgroundColor = ({ transparent, disabled, palette = 'primary' }: IButtonProps) => {
-  return transparent ? 'transparent'
-      : paletteTheme(palette === 'secondary' ? 'grayscale' : palette, disabled ? 2 : 0, palette === 'secondary');
+const paddingLeftAndRight = ({ size }: IButtonProps) => {
+  let paddingLine = 1;
+  const factor = 1.2;
+
+  switch (size) {
+    case 'small':
+      paddingLine = paddingLine / factor;
+      break;
+    case 'large':
+      paddingLine = paddingLine * factor;
+      break;
+    default:
+  }
+  return `${paddingLine}em`;
 };
-const foregroundColor = ({ transparent, disabled, palette = 'primary' }: IButtonProps) =>
-  transparent ? paletteTheme(disabled ? 2 : 1) : paletteTheme('grayscale', 0, palette !== 'secondary');
 
-const hoverBackgroundColor = ({ disabled, transparent, palette = 'primary' }: IButtonProps) =>
-  !disabled && !transparent
-  && paletteTheme(palette, palette === 'secondary' ? 0 : 1)
-  || '';
+const backgroundColor = ({
+  transparent,
+  disabled,
+  palette = 'primary',
+}: IButtonProps) =>
+  transparent ? 'transparent' : paletteTheme(palette, disabled ? 2 : 1);
 
-const hoverForegroundColor = ({ disabled, transparent, palette = 'primary' }: IButtonProps) =>
-  !disabled && !transparent
-  && paletteTheme(
-    palette === 'secondary' ? 'primary' : 'grayscale',
-    palette === 'secondary' ? 1 : 0,
-    palette !== 'secondary'
-  )
-  || '';
+const foregroundColor = ({
+  transparent,
+  disabled,
+  palette = 'primary',
+}: IButtonProps) =>
+  transparent
+    ? paletteTheme(palette, disabled ? 2 : 1)
+    : paletteTheme('grayscale', 0, true);
 
-const borderColor = ({ palette }: IButtonProps) =>
-  ifProp('transparent', 'currentcolor', palette === 'secondary' ? paletteTheme('grayscale', 4, false) : 'transparent');
+const hoverBackgroundColor = ({
+  transparent,
+  disabled,
+  palette = 'primary',
+}: IButtonProps) => !disabled && !transparent && paletteTheme(palette, 0);
 
-const hoverBorderColor = ({ palette }: IButtonProps) =>
-  ifProp('transparent', 'currentcolor', palette === 'secondary' ? paletteTheme('primary', 1, false) : 'transparent');
+const hoverForegroundColor = ({
+  transparent,
+  disabled,
+  palette = 'primary',
+}: IButtonProps) => !disabled && transparent && paletteTheme(palette, 0);
+
+const width = ({ fullWidth }: IButtonProps) => {
+  return fullWidth ? '100%' : 'auto';
+};
 
 const styles = css`
   display: inline-flex;
@@ -64,35 +86,51 @@ const styles = css`
   align-items: center;
   white-space: nowrap;
   font-size: ${fontSize};
-  border: 0.0625em solid ${borderColor};
+  width: ${width};
+  border: 0.0625em solid ${ifProp('transparent', 'currentcolor', 'transparent')};
   height: 2.5em;
   justify-content: center;
   text-decoration: none;
   cursor: ${ifProp('disabled', 'default', 'pointer')};
   appearance: none;
-  padding: 0 1em;
+  padding: 0 ${paddingLeftAndRight};
   border-radius: 0.125em;
   box-sizing: border-box;
   pointer-events: ${ifProp('disabled', 'none', 'auto')};
-  transition: background-color 250ms ease-out, color 250ms ease-out, border-color 250ms ease-out;
+  transition: background-color 250ms ease-out, color 250ms ease-out,
+    border-color 250ms ease-out;
   background-color: ${backgroundColor};
   color: ${foregroundColor};
-  &:hover, &:focus, &:active {
+  &:hover,
+  &:focus,
+  &:active {
     background-color: ${hoverBackgroundColor};
     color: ${hoverForegroundColor};
-    border: 0.0625em solid ${hoverBorderColor};
   }
   &:focus {
-    outline: none
+    outline: none;
   }
 `;
 
-const StyledLink = styled<IButtonProps>(({
-  disabled, transparent, reverse,  height, theme, ...props
-}: IButtonProps) => <Link {...props as LinkProps} />)`${styles}`;
+const StyledLink = styled<IButtonProps>(
+  ({
+    disabled,
+    transparent,
+    reverse,
+    height,
+    theme,
+    ...props
+  }: IButtonProps) => <Link {...props as LinkProps} />
+)`
+  ${styles};
+`;
 
-const Anchor = styled.a`${styles}`;
-const StyledButton = styled.button`${styles}`;
+const Anchor = styled.a`
+  ${styles};
+`;
+const StyledButton = styled.button`
+  ${styles};
+`;
 
 export default ({ type = 'button', ...props }: IButtonProps) => {
   if (props.to) {

@@ -8,7 +8,7 @@ const typography: ITypography = {
 
 const palette: IPalette = {
   primary: ['#096dd9', '#1890ff', '#40a9ff'],
-  secondary: ['#fff'],
+  secondary: ['#212121', '#414141', '#616161'],
   danger: ['#cf1322', '#f5222d', '#ff4d4f'],
   alert: ['#ffa000', '#ffc107', '#ffd761', '#ffecb3'],
   success: ['#388e3c', '#4caf50', '#7cc47f', '#c8e6c9'],

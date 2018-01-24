@@ -5,13 +5,14 @@ declare interface IComposer {
 }
 
 declare interface IStyledTheme {
-  palette(index: number): TColor;
-  palette(p: string, index: number): TColor;
-  palette(index: number, reverse: boolean): TColor;
-  palette(p: string, index: number): TColor;
-  palette(p: object, index: number): TColor;
-  palette(p: string, index: number, reverse: boolean): TColor;
-  font(f: string): TFont;
+  palette(index: number): Interpolation;
+  palette(p: string, index: number): Interpolation;
+  palette(index: number, reverse: boolean): Interpolation;
+  palette(p: string, index: number): Interpolation;
+  palette(p: object, index: number): Interpolation;
+  palette(p: string, index: number, reverse: boolean): Interpolation;
+  font(f: string): Interpolation;
+  size(p: string): Interpolation;
 }
 
 declare interface IPalette {

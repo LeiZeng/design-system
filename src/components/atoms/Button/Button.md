@@ -1,27 +1,65 @@
-Basic palette buttons:
+Full color Buttons:
 
 ```jsx
-[
-  <Button key="1">Push Me</Button>,
-  <Button key="2" palette="secondary">Secondary</Button>,
-  <br key="break1" />,
-  <Button key="3" palette="danger">Danger</Button>,
-  <Button key="4" palette="alert">Alert</Button>,
-  <Button key="5" palette="success">Success</Button>,
-  <br key="break2" />,
-  <Button key="6" disabled>Disabled</Button>,
-]
+<div>
+  <Button palette="primary">Primary</Button>
+  <span> </span>
+  <Button palette="secondary">Secondary</Button>
+  <span> </span>
+  <Button palette="danger">Danger</Button>
+  <span> </span>
+  <Button palette="alert">Alert</Button>
+  <span> </span>
+  <Button palette="success">Success</Button>
+  <div style={{padding:'5px'}}></div>
+  <Button palette="primary" disabled>Primary</Button>
+  <span> </span>
+  <Button palette="secondary" disabled>Secondary</Button>
+  <span> </span>
+  <Button palette="danger" disabled>Danger</Button>
+  <span> </span>
+  <Button palette="alert" disabled>Alert</Button>
+  <span> </span>
+  <Button palette="success" disabled>Success</Button>
+</div>
 ```
-Button size:
+
+Transparent Buttons:
+
 ```jsx
-[
-  <Button key="1">Push Me</Button>,
-  <Button size="large" key="2" palette="secondary">Secondary</Button>,
-  <br key="break1" />,
-  <Button size="large" key="3" palette="danger">Danger</Button>,
-  <Button size="small" key="4" palette="alert">Alert</Button>,
-  <Button size="small" key="5" palette="success">Success</Button>,
-  <br key="break2" />,
-  <Button key="6" disabled>Disabled</Button>,
-]
+<div>
+  <Button palette="primary" transparent>Primary</Button>
+  <span> </span>
+  <Button palette="secondary" transparent>Secondary</Button>
+  <span> </span>
+  <Button palette="danger" transparent>Danger</Button>
+  <span> </span>
+  <Button palette="alert" transparent>Alert</Button>
+  <span> </span>
+  <Button palette="success" transparent>Success</Button>
+  <div style={{padding:'5px'}}></div>
+  <Button palette="primary" transparent disabled>Primary</Button>
+  <span> </span>
+  <Button palette="secondary" transparent disabled>Secondary</Button>
+  <span> </span>
+  <Button palette="danger" transparent disabled>Danger</Button>
+  <span> </span>
+  <Button palette="alert" transparent disabled>Alert</Button>
+  <span> </span>
+  <Button palette="success" transparent disabled>Success</Button>
+</div>
+```
+
+Different size Buttons:
+
+```jsx
+<div>
+  <Button size="small">Small</Button>
+  <span> </span>
+  <Button size="middle">Middle</Button>
+  <span> </span>
+  <Button size="large">Large</Button>
+  <div style={{padding:'5px'}}></div>
+  <Button fullWidth>full width</Button>
+</div>
 ```
