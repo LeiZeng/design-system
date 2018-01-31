@@ -3,6 +3,8 @@ import styled, { css } from 'styled-components';
 import { font, palette } from 'styled-theme';
 import { ifProp } from 'styled-tools';
 
+import withBeforeAfter from './withBeforeAfter';
+
 export interface IInputProps {
   theme?: ITheme;
   palette?: string;
@@ -71,5 +73,5 @@ export const baseInputStyles = css`
 const StyledTextarea = styled(({height, ...props}: ITextareaProps) => <textarea {...props} />);
 const StyledInput = styled((props: ITextareaProps) => <input {...props} />);
 
-export const Textarea = StyledTextarea`${baseInputStyles};${textareaStyles};`;
-export const Text = StyledInput`${textStyle};${baseInputStyles};`;
+export const Textarea = withBeforeAfter<ITextareaProps>(StyledTextarea`${baseInputStyles};${textareaStyles};`);
+export const Text = withBeforeAfter<ITextProps>(StyledInput`${textStyle};${baseInputStyles};`);
