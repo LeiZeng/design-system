@@ -2,8 +2,9 @@ import * as React from 'react';
 
 import {
   ITextProps,
-  StyledInput,
-  StyledTextarea,
+  Text,
+  Textarea,
+  ITextareaProps,
 } from './InputBase';
 
 import StyledSelect, {
@@ -21,8 +22,8 @@ import StyledCheckbox, {
 type TInputPropsAll = ISelectProps | IRadioProps | ITextProps | ICheckboxProps;
 
 export default (props: TInputPropsAll) => {
-  if (props.type === 'textarea') {
-    return <StyledTextarea {...props as ITextProps} />;
+  if (props.type === 'textarea' || (props as ITextareaProps).resize === true) {
+    return <Textarea {...props as ITextareaProps} />;
   } else if (props.type === 'select') {
     return <StyledSelect {...props as ISelectProps} />;
   } else if (props.type === 'radio') {
@@ -30,6 +31,6 @@ export default (props: TInputPropsAll) => {
   } else if (props.type === 'checkbox') {
     return <StyledCheckbox {...props as ICheckboxProps} />;
   } else {
-    return <StyledInput {...props as ITextProps} />;
+    return <Text {...props as ITextProps} />;
   }
 };

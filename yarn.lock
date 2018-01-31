@@ -6249,6 +6249,10 @@ styled-components@^2.4.0:
     stylis "^3.4.0"
     supports-color "^3.2.3"
 
+styled-reset@^1.0.1:
+  version "1.0.1"
+  resolved "http://registry.npm.taobao.org/styled-reset/download/styled-reset-1.0.1.tgz#886c7e3e1c7408619fdcbcc63abab849f924ca03"
+
 styled-theme@^0.3.3:
   version "0.3.3"
   resolved "http://registry.npm.taobao.org/styled-theme/download/styled-theme-0.3.3.tgz#bfd86c275143e58ced413df3b4704369c44253bc"

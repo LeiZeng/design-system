@@ -13,18 +13,35 @@ export interface ITextProps extends IInputProps {
   type?: 'text' | 'textarea';
   placeholder?: string;
 }
-interface IFontProps {
-  type?: string;
-  height?: number;
+export interface ITextareaProps extends ITextProps {
+  resize?: boolean;
 }
 
 const DEFAULT_HEIGHT = 40;
-const DEFAULT_TEXTAREA_HEIGHT = 100;
-const TEXTAREA = 'textarea';
 
-const fontSize = ({type, height}: IFontProps) =>
-  type === TEXTAREA ? '1rem' : `${(height || DEFAULT_HEIGHT) / 35.5555555556}rem`;
+const fontSize = ({height}: IInputProps) => `${(height || DEFAULT_HEIGHT) / 35.5555555556}rem`;
+const textareaHeight = ({height}: IInputProps) => `${height || DEFAULT_HEIGHT}px`;
+const resize = ({resize = true}: ITextareaProps) => resize ? 'vertical' : 'none';
 
+const textStyle = css`
+  &input[type="text"], &input[type="password"], &input[type="number"] {
+    -webkit-appearance: none;
+  }
+`;
+const textareaStyles = css`
+  font-size: 1.125rem;
+  padding: 0.4444444444em;
+  height: ${textareaHeight}; 
+  min-height: ${textareaHeight};
+  max-width: 100%;
+  vertical-align: bottom;
+  transition: all .3s, height 0s;
+  list-style: none;
+  overflow: auto;
+  resize: ${resize};
+  touch-action: manipulation;
+  ${textStyle}
+`;
 export const baseInputStyles = css`
   font-family: ${font('primary')};
   display: block;
@@ -32,8 +49,8 @@ export const baseInputStyles = css`
   margin: 0;
   box-sizing: border-box;
   font-size: ${fontSize};
-  padding: ${ifProp({ type: TEXTAREA }, '0.4444444444em', '0 0.4444444444em')};
-  height: ${({ height }) => ifProp({ type: TEXTAREA }, `${height}px`, '2.2222222222em')};
+  padding: 0 0.4444444444em;
+  height: 2.2222222222em;
   color: ${palette('grayscale', 0)};
   background-color: ${palette('grayscale', 0, true)};
   border: 1px solid ${ifProp('invalid', palette('danger', 2), palette('grayscale', 2, true))};
@@ -50,9 +67,9 @@ export const baseInputStyles = css`
     box-shadow: 0 0 2px 0 ${ifProp('invalid', palette('danger', 2), palette('primary', 2))}
   }
 `;
-export const StyledTextarea = styled(({type = TEXTAREA, height = DEFAULT_TEXTAREA_HEIGHT, ...props}: ITextProps) => (
-  <textarea {...props} />
-))`${baseInputStyles}`;
-export const StyledInput = styled((props: ITextProps) => (
-  <input {...props} />
-))`${baseInputStyles};`;
+
+const StyledTextarea = styled(({height, ...props}: ITextareaProps) => <textarea {...props} />);
+const StyledInput = styled((props: ITextareaProps) => <input {...props} />);
+
+export const Textarea = StyledTextarea`${baseInputStyles};${textareaStyles};`;
+export const Text = StyledInput`${textStyle};${baseInputStyles};`;

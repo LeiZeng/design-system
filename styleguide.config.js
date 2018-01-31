@@ -16,6 +16,7 @@ module.exports = {
   styleguideComponents: {
     Wrapper: path.join(__dirname, 'src/Wrapper')
   },
+  skipComponentsWithoutExample: true,
   propsParser: require('react-docgen-typescript').parse,
   webpackConfig: require('react-scripts-ts/config/webpack.config.dev.js'),
 };
