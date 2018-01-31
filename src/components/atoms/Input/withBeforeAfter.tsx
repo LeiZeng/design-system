@@ -36,6 +36,7 @@ width: 100%;
 `;
 
 const WrapperComponent = styled(
+  // tslint:disable-next-line:no-any
   ({children, ...props}: StyledProps<any>) => <span {...props}>{children}</span>
 )`${wrapperStyle}`;
 
@@ -48,6 +49,7 @@ const WrapPlainString = (text: React.ReactNode) => {
 function withBeforeAfter<P>(
   WrappedComponent: TWrappedComponent<P>
 ): React.StatelessComponent<P & TWithBeforeAfterProps> {
+  // tslint:disable-next-line:no-any
   return ({ withWrapper, withAfter, withBefore, ...others }: any) => {
     const wrappedComponent = <WrappedComponent {...others} />;
     const BeforeComponent = WrapPlainString(withBefore);
